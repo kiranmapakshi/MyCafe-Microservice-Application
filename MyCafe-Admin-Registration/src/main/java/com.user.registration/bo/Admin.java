@@ -7,8 +7,8 @@ import lombok.Data;
                 Chefs open Chef page using their user name by using MyCafe-Chef Service*/
 
 @Data
-public class User {
-    public String userName;
+public class Admin {
+    public String adminId;
+    public String adminName;
     public String password;
-    public String role;
 }
