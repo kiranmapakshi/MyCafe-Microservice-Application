@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class Admin {
-    public String adminId;
-    public String adminName;
-    public String password;
+    private int adminId;
+    private String adminName;
+    private String password;
 }

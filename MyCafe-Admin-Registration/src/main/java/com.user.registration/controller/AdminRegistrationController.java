@@ -5,10 +5,13 @@ import com.user.registration.interfaces.IAdminService;
 import io.vavr.NotImplementedError;
 import io.vavr.control.Try;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.annotation.RequestScope;
 
 @RestController
+@RequestScope
 @RequestMapping(path = "/AdminRegistration")
 public class AdminRegistrationController {
     @Autowired
@@ -17,11 +20,14 @@ public class AdminRegistrationController {
     public AdminRegistrationController(IAdminService adminService) {
         this.adminService = adminService;
     }
+    @GetMapping(path = "/ping")
+    public ResponseEntity<String> ping(){
+        return  new ResponseEntity<>("pong", HttpStatus.OK);
+    }
 
     @PostMapping
-    public Try<ResponseEntity> createAdmin(@RequestBody Admin admin){
-        adminService.createAdmin(admin);
-       return Try.failure(new NotImplementedError());
+    public ResponseEntity createAdmin(@RequestBody Admin admin){
+        return  adminService.createAdmin(admin);
     }
 
     @PatchMapping
