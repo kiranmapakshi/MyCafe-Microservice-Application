@@ -13,6 +13,8 @@
         <module>MyCafe-Admin-Registration</module>
         <module>MyCafe-Admin</module>
         <module>MyCafe-Config-Server</module>
+        <module>MyCafe-Eureka-Discovery-Server</module>
+        <module>MyCafe-Zuul</module>
     </modules>
     <name>MyCafe</name>
     <packaging>pom</packaging>
@@ -54,13 +56,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-dependencies</artifactId>
-            <version>Dalston.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-       <dependency>
-            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
             <version>2.2.2.RELEASE</version>
         </dependency>
@@ -75,4 +70,15 @@
         </dependency>
 
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
