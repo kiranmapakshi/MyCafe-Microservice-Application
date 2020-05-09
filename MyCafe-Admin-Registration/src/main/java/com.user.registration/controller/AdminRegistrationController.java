@@ -4,6 +4,8 @@ import com.user.registration.bo.Admin;
 import com.user.registration.interfaces.IAdminService;
 import io.vavr.NotImplementedError;
 import io.vavr.control.Try;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,8 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestScope
 @RequestMapping(path = "/AdminRegistration")
 public class AdminRegistrationController {
+
+    Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     public final IAdminService adminService;
 
@@ -22,6 +26,7 @@ public class AdminRegistrationController {
     }
     @GetMapping(path = "/ping")
     public ResponseEntity<String> ping(){
+        logger.info("Hello World");
         return  new ResponseEntity<>("pong", HttpStatus.OK);
     }
 
