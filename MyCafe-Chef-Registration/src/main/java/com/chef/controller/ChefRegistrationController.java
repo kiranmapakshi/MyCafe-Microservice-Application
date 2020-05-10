@@ -4,12 +4,17 @@ import com.chef.bo.Chef;
 import com.chef.interfaces.IChefService;
 import io.vavr.NotImplementedError;
 import io.vavr.control.Try;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping(path = "/ChefRegistration")
 public class ChefRegistrationController {
+    private static final Logger logger = LoggerFactory.getLogger(ChefRegistrationController.class);
     @Autowired
     public final IChefService chefService;
 
@@ -35,7 +40,8 @@ public class ChefRegistrationController {
         return Try.failure(new NotImplementedError());
     }
     @GetMapping
-    public Try<ResponseEntity> getChefs(){
-        return Try.failure(new NotImplementedError());
+    public ResponseEntity getChefs(){
+        logger.info("Chef hello world");
+        return new ResponseEntity<>("pong", HttpStatus.OK);
     }
 }

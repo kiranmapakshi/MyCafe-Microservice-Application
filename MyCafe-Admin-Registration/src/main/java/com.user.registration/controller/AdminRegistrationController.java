@@ -10,14 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.annotation.RequestScope;
 
 @RestController
 @RequestScope
 @RequestMapping(path = "/AdminRegistration")
 public class AdminRegistrationController {
+   // static { System.setProperty("logback.configurationFile", "src/main/resources/logback.xml");}
+    private static final Logger logger = LoggerFactory.getLogger(AdminRegistrationController.class);
 
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    private RestTemplate restTemplate;
+
     @Autowired
     public final IAdminService adminService;
 
@@ -27,6 +32,9 @@ public class AdminRegistrationController {
     @GetMapping(path = "/ping")
     public ResponseEntity<String> ping(){
         logger.info("Hello World");
+        String obj = restTemplate.getForObject("http://localhost:9191/ChefRegistration", String.class);
+        logger.info("Hello World");
+        logger.debug("Hello World");
         return  new ResponseEntity<>("pong", HttpStatus.OK);
     }
 
