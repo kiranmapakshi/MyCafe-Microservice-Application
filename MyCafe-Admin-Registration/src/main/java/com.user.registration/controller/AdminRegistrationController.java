@@ -19,6 +19,7 @@ import org.springframework.web.context.annotation.RequestScope;
 public class AdminRegistrationController {
    // static { System.setProperty("logback.configurationFile", "src/main/resources/logback.xml");}
     private static final Logger logger = LoggerFactory.getLogger(AdminRegistrationController.class);
+    org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(AdminRegistrationController.class);
 
     @Autowired
     private RestTemplate restTemplate;
@@ -32,6 +33,7 @@ public class AdminRegistrationController {
     @GetMapping(path = "/ping")
     public ResponseEntity<String> ping(){
         logger.info("Hello World");
+        log.info("Hello Worls log4j");
         String obj = restTemplate.getForObject("http://localhost:9191/ChefRegistration", String.class);
         logger.info("Hello World");
         logger.debug("Hello World");
